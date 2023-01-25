@@ -10,7 +10,6 @@
                     class="flex items-center justify-between py-6 px-3 bg-white my-[0.125rem] border-b border-b-gray-300" 
                     v-for="(match, index) in liveScores" 
                     :key="index"
-                    @click="viewMatch(match, index)"
                 >
                     <div class="flex items-center">
                         <div class="minutes ml-5">
@@ -58,17 +57,12 @@ export default {
         getLiveScores () {
             this.loading = true
             BASE_URL.get('livescores/').then(res => {
-                console.log(res.data)
                 let result = res.data
                 this.liveScores = result.scores
                 setTimeout(() => {this.loading = false}, 1000)
             })
             .catch(err => console.log(err))
-        },
-        viewMatch(match, index) {
-            console.log(index)
-            console.log(match, 'Match')
-        }        
+        }       
     },
     mounted(){
         this.getLiveScores()
