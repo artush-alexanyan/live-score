@@ -18,7 +18,12 @@ const routes = [
     path: '/injuries',
     name: 'AppInjuries',
     component: () => import('../pages/AppInjuries.vue')
-  },  
+  }, 
+  {
+    path: '/transfers',
+    name: 'AppTransfers',
+    component: () => import('../pages/AppTransfers.vue')
+  },    
   {
     path: '/match-deatails/:id',
     name: 'MatchDetails',
