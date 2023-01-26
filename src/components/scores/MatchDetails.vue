@@ -7,23 +7,23 @@
 
             <div class="flex items-center justify-between p-5 mx-auto md:w-3/4 border-b border--gray-100">
                 <h2 class="md:text-3xl">
-                    {{ currentMatch.home_name }}
+                    {{ currentMatch.away_name }}
                 </h2>
                 <div class="score-details grid justify-items-center">
                     <span> {{ currentMatch.rawdate }} </span>
                     <div class="match-score flex items-center md:text-[5rem] font-bold">
                         <span class="my-2">
-                            {{ currentMatch.home_score }}
+                            {{ currentMatch.away_score }}
                         </span>
                         <span>-</span>
                         <span class="my-2">
-                            {{ currentMatch.away_score }}
+                           {{ currentMatch.home_score }}
                         </span>                    
                     </div>
                     <span class="uppercase"> {{ currentMatch.time }} </span>
                 </div>
                 <h2 class="md:text-3xl">
-                    {{ currentMatch.away_name }}
+                    {{ currentMatch.home_name }}
                 </h2>            
             </div>
             <div class="flex items-center justify-between py-5 mx-auto md:w-3/4 border-b border-b-gray-100">
@@ -41,24 +41,24 @@
             </div> 
             <div class="lineups flex justify-between md:w-3/4 mx-auto p-5" v-show="currentTab === 1">
                 <ul>
-                    <li v-for="(home_player, index) in currentMatch.home_lineups" :key="index">
+                    <li v-for="(home_player, index) in currentMatch.away_lineups" :key="index">
                         {{ index + 1 }})  {{ home_player }}
                     </li>
                 </ul>
                 <ul>
-                    <li v-for="(away_player, index) in currentMatch.away_lineups" :key="index">
+                    <li v-for="(away_player, index) in currentMatch.home_lineups" :key="index">
                         {{ index + 1 }})  {{ away_player }}
                     </li>
                 </ul>            
             </div>  
             <div class="benchs flex justify-between md:w-3/4 mx-auto p-5" v-show="currentTab === 2">
                 <ul>
-                    <li v-for="(home_player, index) in currentMatch.home_bench" :key="index">
+                    <li v-for="(home_player, index) in currentMatch.away_bench" :key="index">
                         {{ index + 1 }})  {{ home_player }}
                     </li>
                 </ul>
                 <ul>
-                    <li v-for="(away_player, index) in currentMatch.away_bench" :key="index">
+                    <li v-for="(away_player, index) in currentMatch.home_bench" :key="index">
                         {{ index + 1 }})  {{ away_player }}
                     </li>
                 </ul>            
