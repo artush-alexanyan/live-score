@@ -10,7 +10,7 @@
                 >
                     <div class="p-5">
                         <div>
-                            <h2 class="text-xl text-blue-700 text-center bg-gray-50 my-3">
+                            <h2 class="text-xl text-blue-700 text-center bg-slate-100 my-3">
                                 {{ transfer.name }}
                             </h2>
                             <p class="italic text-gray-500 text-center" v-show="transfer.transfer_type != '-'">
@@ -20,12 +20,12 @@
                         <h2 class="text-green-700 text-center">
                           Transfer date:  {{ transfer.transfer_date }}
                         </h2>                        
-                        <div class="flex items-center justify-between w-full px-10 my-5">
-                            <p class="text-2xl font-bold text-slate-600"> {{ transfer.old_team }} </p>
+                        <div class="flex items-center justify-between w-full px-10 my- bg-slate-50 py-5">
+                            <p class="md:text-2xl font-bold text-slate-600"> {{ transfer.old_team }} </p>
                             <div>
                                 <font-awesome-icon icon="fa-solid fa-chevron-right" class="text-green-500 font-bold" v-for="(icon, index) in 3" :key="index" />
                             </div>
-                            <p class="text-2xl font-bold text-slate-600"> {{ transfer.new_team }} </p>
+                            <p class="md:text-2xl font-bold text-slate-600"> {{ transfer.new_team }} </p>
                         </div>
                     </div>
                 </li>
