@@ -23,7 +23,12 @@ const routes = [
     path: '/transfers',
     name: 'AppTransfers',
     component: () => import('../pages/AppTransfers.vue')
-  },    
+  }, 
+  {
+    path: '/assists',
+    name: 'AppAssists',
+    component: () => import('../pages/AppAssists.vue')
+  },      
   {
     path: '/match-deatails/:id',
     name: 'MatchDetails',
