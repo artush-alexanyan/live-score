@@ -12,29 +12,43 @@
 
                     </div>
                     <div class="flex items-center justify-between text-xl px-16 py-5 font-bold">
-                        <h1 class="">{{ assist.home }}</h1>
+                        <h1 class="">
+                            {{ assist.home }}
+                        </h1>
                         <h1>-</h1>
-                        <h1 class="">{{ assist.away }}</h1>
+                        <h1 class="">
+                            {{ assist.away }}
+                        </h1>
                     </div>
                     <div class="text-center m-8">
                         <button 
                             class="text-white bg-blue-600 px-5 py-2" 
-                            @click="showArticle(assist, index)"
+                            @click="showArticle(assist)"
                         >
                             Show articles
                         </button>
                     </div>
                     <div>
                         <ul v-for="(art, index) in article" :key="index">
-                            <li v-show="!loadArticles && assist.article != null && assist.article.api_url === art.url">  
+                            <li 
+                                v-show="!loadArticles && assist.article != null && assist.article.api_url === art.url"
+                            >  
                                 <div class="">
                                     <ul class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
                                         <li v-for="(late, index) in latest" :key="index">
                                             <div class="latest_news_card">
-                                                <img :src="late.image" alt="Avatar">
+                                                <img 
+                                                    :src="late.image" 
+                                                    alt="Avatar"
+                                                >
                                                 <div class="information">
-                                                    <h4><b>{{ late.category }}</b></h4> 
-                                                    <p>{{ late.title }} <strong>({{ late.date }})</strong> </p> 
+                                                    <h4>
+                                                        <b>{{ late.category }}</b>
+                                                    </h4> 
+                                                    <p>
+                                                        {{ late.title }} 
+                                                        <strong>({{ late.date }})</strong> 
+                                                    </p> 
                                                 </div>
                                                 <div class="text-center text-blue-500 hover:underline hover:text-blue-700 my-5">
                                                     <a target="_blank" :href="late.link">More</a>
@@ -51,7 +65,10 @@
                                      View more 
                                 </a>
                             </li>
-                            <div class=" py-5 text-center" v-show="loadArticles && assist.article != null && assist.article.api_url === art.url">
+                            <div 
+                                class=" py-5 text-center" 
+                                v-show="loadArticles && assist.article != null && assist.article.api_url === art.url"
+                            >
                                 <p>Loading...</p>
                             </div>                             
                         </ul>                        
@@ -80,7 +97,6 @@ export default {
         loading: false,
         loadArticles: false,
         article: [],
-        currentArticle: 0,
         noArticleBlock: '',
         latest: []
     }),
@@ -97,8 +113,7 @@ export default {
             })
             .catch(err => console.log(err))
         }, 
-        showArticle(assist, index) {
-            this.currentArticle = index
+        showArticle(assist) {
             this.article = []
             if(assist.article != null) {
                 this.loadArticles = true
@@ -109,7 +124,6 @@ export default {
                         url: assist.article.api_url
                     })
                     this.article.map(item => {
-                        console.log(item.article.latest, 'uiujkfdshndzsb')
                         this.latest = item.article.latest
                     })
                     setTimeout(() => {this.loadArticles = false}, 1000)
