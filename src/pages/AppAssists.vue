@@ -34,6 +34,7 @@
                                 v-show="!loadArticles && assist.article != null && assist.article.api_url === art.url"
                             >  
                                 <div class="">
+                                    <h2 class="text-2xl text-center py-5">Latest News</h2>
                                     <ul class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
                                         <li v-for="(late, index) in latest" :key="index">
                                             <div class="latest_news_card">
@@ -51,19 +52,33 @@
                                                     </p> 
                                                 </div>
                                                 <div class="text-center text-blue-500 hover:underline hover:text-blue-700 my-5">
-                                                    <a target="_blank" :href="late.link">More</a>
+                                                    <a 
+                                                        target="_blank" 
+                                                        :href="late.link"
+                                                    >
+                                                        More
+                                                    </a>
                                                 </div>
                                             </div>                                            
                                         </li>
                                     </ul>
+                                    <ul>
+                                        <li v-for="(block, index) in content_block" :key="index">
+                                            <div v-html="block.meta.content" class="py-1">
+
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <a 
-                                    target="_blank" 
-                                    class="hover:underline italick text-blue-500 text-sm cursor-pointer" 
-                                    :href="art.article.link"
-                                >
-                                     View more 
-                                </a>
+                                <div class="text-center my-10">
+                                    <a 
+                                        target="_blank" 
+                                        class="hover:bg-white hover:text-black hover:border hover:border-gray-400 text-white text-sm cursor-pointer md:text-lg px-5 py-2 bg-black" 
+                                        :href="art.article.link"
+                                    >
+                                        View more 
+                                    </a>                                    
+                                </div>
                             </li>
                             <div 
                                 class=" py-5 text-center" 
@@ -98,7 +113,8 @@ export default {
         loadArticles: false,
         article: [],
         noArticleBlock: '',
-        latest: []
+        latest: [],
+        content_block: []
     }),
     computed: {
 
@@ -123,6 +139,9 @@ export default {
                         article: result,
                         url: assist.article.api_url
                     })
+                    this.content_block = result.content.blocks
+                    let url = result.url
+                    console.log(url, URL)
                     this.article.map(item => {
                         this.latest = item.article.latest
                     })
