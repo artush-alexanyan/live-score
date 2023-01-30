@@ -43,7 +43,7 @@
                                                     alt="Avatar"
                                                 >
                                                 <div class="information">
-                                                    <h4>
+                                                    <h4 class="py-2">
                                                         <b>{{ late.category }}</b>
                                                     </h4> 
                                                     <p>
@@ -64,9 +64,7 @@
                                     </ul>
                                     <ul>
                                         <li v-for="(block, index) in content_block" :key="index">
-                                            <div v-html="block.meta.content" class="py-1">
-
-                                            </div>
+                                            <div v-html="block.meta.content" class="py-1"></div>
                                         </li>
                                     </ul>
                                 </div>
